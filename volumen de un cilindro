@@ -1,0 +1,30 @@
+// ChachonJaime.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "stdlib.h"
+#include "conio.h"
+#include "math.h"
+using namespace std;
+
+float volumen(float radio, float altura);
+
+void main()
+{float radio, altura, V;
+cout<<"Ingrese el radio en metros: "; 
+cin>>radio;
+cout<<"Ingrese la altura en metros: "; 
+cin>>altura;
+V = volumen(radio, altura);
+cout<<"El volumen del cilindro es de "<<V<<"metros cubicos";
+getch();
+
+}
+
+float volumen(float radio, float altura)
+{float PI=3.1416,V;
+
+V=PI*radio*radio*altura;
+return V;
+}
