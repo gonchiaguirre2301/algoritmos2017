@@ -1,0 +1,44 @@
+// c++.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "stdio.h"
+#include "conio.h"
+
+using namespace std;
+
+int factorial(int n, int fact=1);
+int potencia(int x, int y);
+
+float serie(int n)
+{float S=0;
+int num=1, den=1, p=1, i=1, exp=2;
+while(i<=n)
+	if(p>0)
+		S = S + factorial(num)/potencia(den, exp);
+	else	
+		S = S - factorial(num)/potencia(den, exp);
+	num=num+2;
+	den=den+2;
+	exp=exp+2;
+	p=p*-1;
+	i++;
+return(S);
+}
+
+int factorial(int n, int fact=1)
+{for(int i=0;i<n;i++)
+	fact= fact * i;
+return(fact);
+}
+
+int potencia(int x, int y)
+{int a=0;
+while (y<a)
+	{x= x*a;
+	 a++;
+	}
+return (x);
+}
