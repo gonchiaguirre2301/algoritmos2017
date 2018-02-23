@@ -1,0 +1,23 @@
+// c.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "stdio.h"
+#include "conio.h"
+
+using namespace std;
+
+void frecuencuia(int V[], int n)
+{int a=1, num;
+for(int i=0;i<n;i++)
+	for(int j=i+1;j<n-1;j++)
+		{if(V[i]=V[j])
+			a++;
+		 num = V[i];
+		}
+cout<<"El numero "<<num<<" se repite "<<a<<" veces. "<<endl;
+getch();
+}
+
