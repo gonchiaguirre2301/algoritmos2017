@@ -1,0 +1,164 @@
+// algor.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "conio.h"
+
+using namespace std;
+
+void cargar(int V[], int n)
+{
+	for(int i=0;i<n;i++)
+		{
+		cout<<"V["<<i<<"]= ";
+		cin>>V[i];
+		}
+}
+
+void mostrar(int V[], int n)
+{
+	for(int i=0;i<n;i++)
+		{
+		cout<<V[i]<<endl;
+		}
+}
+
+int sumaimpares(int V[], int n)
+{
+	if(n==1)
+	{if(V[0]%2==1)
+	return V[0];
+	else
+		return 0;
+	}
+	else
+	{int x= sumaimpares(V, n-1);
+	if(V[n-1]%2==0)
+		return x;
+	else 
+		return x+V[n-1];
+	}
+}
+
+// Verificar si esta ordenado descendentemente
+
+bool verificar(int V[], int n)
+{
+	if(n==1)
+		return true;
+	if(n==2)
+	{
+		if(V[0]>=V[1])
+			return true;
+		else 
+			return false;
+	}
+	else 
+	{bool k=verificar(V, n-1);
+	if (k==true)
+		{
+			if(V[n-1]<=V[n-2])
+				return true;
+			else
+				return false;
+		}
+	}
+}
+
+// Verificar si un valor x existe entre los elementos del vector
+
+bool existe(int V[], int n, int x)
+{
+	if(n==1)
+	{
+		if(V[0]==x)
+			return true;
+		else
+			return false;
+	}
+	else
+	{
+		bool z= existe(V, n-1, x);
+		if(z)
+			return true;
+			else
+			{
+				if(V[n-1]==x)
+					return true;
+				else
+					return false;
+			}
+	}
+}
+
+// Dado un vector, cambiar sus valores elevando al cuadrado cada uno de sus elementos.
+
+void cuadrado(int V[], int n)
+{
+	if(n==1)
+		V[0]=V[0]*V[0];
+	else
+	{
+		cuadrado(V, n-1);
+		V[n-1]=V[n-1]*V[n-1];
+	}
+}
+
+//capicua
+
+bool capicua(int V[], int n)
+{
+	if(n==1)
+		return true;
+	if(n==2)
+	{
+		if(V[0]-V[1]==0)
+			return true;
+		else 
+			return false;
+	}
+	if(n%2!=0)
+		bool k=capicua(V, n-2);
+
+
+	{
+		bool k=capicua(V, n-2);
+		if (k)
+		{
+			if(V[n-1]-V[0]==0 || V[n-2]-V[1]==0)
+				return true;
+			else
+				return false;
+		}
+		else 
+			return false;
+	}
+}
+
+void main()
+{int n, V[50], x, z;
+cout<<"Ingrese el valor de n: ";
+cin>>n;
+//cout<<"Ingrese el valor de x: ";
+//cin>>x;
+cargar(V, n);
+/*z = sumaimpares(V, n);
+cout<<" La suma de los impares del vector es igual a "<<z<<endl;
+if (verificar(V,n)==true)
+	cout<<" El vector esta ordenado descendentemente "<<endl;
+else
+	cout<<" El vector no esta ordenado descendentemente "<<endl;
+if(existe(V, n, x)==true)
+	cout<<"El elemento x="<<x<<" esta repetido en el vector"<<endl;
+else
+	cout<<"El elemento x="<<x<<" no esta repetido en el vector"<<endl;*/
+//cuadrado(V, n);
+//mostrar(V, n);
+if(capicua(V, n)==true)
+	cout<<" Es capicua"<<endl;
+else
+	cout<<" No es capicua"<<endl;
+getch();
+}
