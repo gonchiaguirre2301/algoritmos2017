@@ -1,0 +1,138 @@
+// POO.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+class fraccion{
+private:
+ int num;
+ int den;
+
+public:
+ fraccion() {
+   num=1;
+   den=1;
+ }
+
+ void setNum1(int n1)
+ {
+	 num=n1;
+ }
+
+ void setDen1(int d1)
+ {
+	 den=d1;
+ }
+
+ void setNum2(int n2)
+ { num=n2; }
+ 
+ void setDen2(int d2)
+ { den=d2; }
+
+ int getNum()
+ { return num; }
+
+ int getDen()
+ { return den; }
+
+void leer()
+{
+	int a, b;
+	cout<<" Numerador :";
+  cin>>a;
+  cout<<" Denominador :";
+  cin>>b;
+  num=a;
+  den=b;
+}
+
+void multiplica(fraccion f1, fraccion f2)
+{
+	int n1=f1.getNum();
+	 int d1=f1.getDen();
+	 int n2=f2.getNum();
+	 int d2=f2.getDen();
+	 num=n1*n2;
+	 den=d1*d2;
+	 cout<<" Multiplicacion: "<<endl;
+	 simplificar();
+}
+
+void mostrar()
+{
+  cout<<num<<"/"<<den<<endl;
+}
+
+ void simplificar(){
+ int c=2;
+  while(c<=num && c<=den)
+  {
+	 if(num % c==0 && den % c==0){
+	   num=num / c;
+	   den=den / c;
+	 }
+	 else
+		c++;
+  }
+ }
+
+ void suma(fraccion f1, fraccion f2);
+ void multiplicarescalar(int x);
+
+}
+; //fin clase
+
+void fraccion::suma(fraccion f1, fraccion f2)
+ {
+	 int n1=f1.getNum();
+	 int d1=f1.getDen();
+	 int n2=f2.getNum();
+	 int d2=f2.getDen();
+	 num= n1*d2+n2*d1;
+	 den=d1*d2;
+	 simplificar();
+	 cout<<" Suma: "<<endl;
+ }
+
+void fraccion::multiplicarescalar(int x)
+{
+	num= num*x;
+	simplificar();
+}
+
+int MCM(int x, int y)
+{
+	int c=1, k, m;
+	if(x>y)
+		k=x;
+	else
+		k=y;
+	while(c<k)
+		{
+			if(x%c==0 && y%c==0)
+				m=c;
+			else
+				c++;
+	}
+	return c;
+}
+
+void main()
+{
+	int a,b,x, y, z;
+	fraccion f1, f2, f3;
+	f1.leer();
+	cout<<"Ingrese el denominador X ="<<endl;
+	cin>>x;
+	cout<<"Ingrese el denominador Y="<<endl;
+	cin>>y;
+	z= MCM(x,y);
+	cout<<"El maximo comun multiplo es: "<<z;
+	getch();
+}
